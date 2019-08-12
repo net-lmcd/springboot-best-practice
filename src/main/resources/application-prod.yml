@@ -1,0 +1,19 @@
+spring:
+  profiles: prod
+  redis:
+    host: 10.220.201.x
+    port: 27001
+    password: 안알랴줌
+
+redis:
+  sentinel:
+    master: 안알랴줌
+    first: 10.220.201.x
+    second: 10.220.201.x
+    third: 10.220.201.x
+    port: 28001
+
+server:
+  list:
+    atc: 10.220.136.x:x
+  connection-timeout: 3s

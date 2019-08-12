@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: image-server
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 3MB
+  mvc:
+    contentnegotiation:
+      favor-parameter: true
+      favor-path-extension: true
+
+server:
+  tomcat:
+    max-connections: 10000
+    max-threads: 500
+    max-http-post-size: 3MB
+    min-spare-threads: 30
+  # Maximum number of connections that the server will accept and process at any given time.
+  port: 8443
+
+#Actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+tomcat:
+  ajp:
+    protocol: AJP/1.3
+    port: 8444
+    enabled: true
+
+redis:
+  sentinel:
+    master: mymaster
+    first: 127.0.0.1
+    second: 127.0.0.1
+    third: 127.0.0.1
+    port: 28001

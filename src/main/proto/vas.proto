@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.kt.narle.imageserver.grpc";
+option java_outer_classname = "vasSpaceProto";
+option objc_class_prefix = "HLW";
+
+package vasSpace;
+
+//service definition
+service VAS {
+    rpc LoadImage(SpringRequest) returns (CReply) {}
+    rpc LoadImages(Request) returns (VAReply) {}
+
+}
+
+message SpringRequest {
+    string uuid = 1;
+    string filename = 2;
+//    bytes image = 3;
+
+    enum ModelType {
+        TYPE_UNSPECIFIED = 0;
+        LICENSE_PLATE_DETECTION = 1;
+        AVATAR_DETECTION = 2;
+        FACE_DETECTION = 3;
+    }
+    ModelType modelType = 3;
+}
+
+message Request {
+    repeated SpringRequest request = 1;
+}
+
+message CReply {
+    string result = 1;
+}
+
+message VAReply {
+    repeated CReply reply = 1;
+}

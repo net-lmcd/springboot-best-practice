@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: local
+  boot:
+    admin:
+      client:
+        url: http://192.168.0.8:8070 #Admin Server URL
+        instance:
+          service-url: http://192.168.0.38:8443 # this application server ip-address
+  redis:
+    host: 127.0.0.1
+    port: 7001
+    password: tkdals12
+
+redis:
+  sentinel:
+    master: mymaster
+    first: 127.0.0.1
+    second: 127.0.0.1
+    third: 127.0.0.1
+    port: 28001
+
+server:
+  list:
+      atc: 183.98.154.x:x
+  connection-timeout: 3s
